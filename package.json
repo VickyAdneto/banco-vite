@@ -29,7 +29,8 @@
     "deploy": "npm run build && gh-pages -d dist",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist node_modules/.vite",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "serve": "serve dist"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -74,6 +75,7 @@
     "react-hook-form": "^7.47.0",
     "react-resizable-panels": "^0.0.55",
     "recharts": "^2.8.0",
+    "serve": "^14.2.4",
     "sonner": "^1.2.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
