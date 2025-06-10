@@ -751,7 +751,7 @@ function Frame1171277912() {
       <div className="flex flex-row items-center relative size-full">
         <div className="box-border content-stretch flex flex-row font-['Lato:Regular',_sans-serif] font-normal items-center justify-between leading-[0] not-italic px-5 py-3.5 relative text-[#e2e2e2] text-[14px] text-left text-nowrap tracking-[0.24px] w-[390px]">
           <Frame1171277912Text text="Copyright © 2025 Axis Bank" />
-          <Frame1171277912Text text="Powered by Bankco" />
+          <Frame1171277912Text text="Powered by Adneto" />
         </div>
       </div>
     </div>
