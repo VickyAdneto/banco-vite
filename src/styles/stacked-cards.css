@@ -1,0 +1,53 @@
+/* Hide scrollbar while maintaining functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Add 3D card hover effects */
+.card-3d {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse animation for decorative elements */
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.pulse-slow {
+  animation: soft-pulse 4s ease-in-out infinite;
+}
+
+/* Stacked card background effect */
+.card-stack-bg {
+  position: absolute;
+  content: '';
+  top: 0.5rem;
+  left: 0.5rem;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  z-index: -1;
+  border-radius: 1rem;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.card-stack:hover .card-stack-bg {
+  transform: rotate(-5deg) translate(-0.25rem, 0.25rem);
+}

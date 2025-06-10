@@ -1,0 +1,45 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--spin-degrees));
+  }
+}
+
+.wheel-spinning {
+  animation: spin 4s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px 2px rgba(151, 20, 77, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(151, 20, 77, 0.5);
+  }
+}
+
+.wheel-hub-glow {
+  animation: pulse-glow 1.5s infinite;
+}
+
+.reward-confetti-enter {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.reward-confetti-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.reward-confetti-exit {
+  opacity: 1;
+}
+
+.reward-confetti-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
