@@ -17,11 +17,11 @@ This platform provides a complete rewards ecosystem for Axis Bank customers, fea
 
 ## 🚀 Live Demo
 
-- **GitHub Repository**: [https://github.com/wugweb-git/rewards_portal](https://github.com/wugweb-git/rewards_portal)
+- **GitHub Repository**: [https://github.com/VickyAdneto/banco-vite](https://github.com/VickyAdneto/banco-vite)
 - **Demo Credentials**: 
-  - Username: `wugweb`
-  - Password: `wugweb`
-  - Date of Birth: `10/05/2000`
+  - Username: `adneto`
+  - Password: `adneto`
+  - Date of Birth: `10/05/1980`
 
 ## 🛠️ Technology Stack
 
@@ -127,7 +127,7 @@ This platform provides a complete rewards ecosystem for Axis Bank customers, fea
 ### Quick Start
 ```bash
 # Clone the repository
-git clone https://github.com/wugweb-git/rewards_portal.git
+git clone https://github.com/VickyAdneto/banco-vite.git
 
 # Navigate to project directory
 cd rewards_portal
@@ -152,9 +152,9 @@ VITE_APP_TITLE="Axis Bank Rewards Platform"
 ## 🧪 Testing Credentials
 
 ### Demo Account
-- **Username**: `wugweb`
-- **Password**: `wugweb` 
-- **Date of Birth**: `10/05/2000`
+- **Username**: `adneto`
+- **Password**: `adneto` 
+- **Date of Birth**: `10/05/1980`
 - **Account Type**: Savings Account
 - **Segment**: Burgundy (Premium)
 
@@ -286,7 +286,7 @@ CMD ["npm", "run", "preview"]
 
 ### Development Team
 - **Project Lead**: WugWeb Development Team
-- **Repository**: [GitHub - wugweb-git/rewards_portal](https://github.com/wugweb-git/rewards_portal)
+- **Repository**: [https://github.com/VickyAdneto/banco-vite](https://github.com/VickyAdneto/banco-vite)
 
 ### Business Requirements
 - **Banking Division**: Axis Bank Savings Account
@@ -316,6 +316,6 @@ This project is proprietary software developed for Axis Bank. All rights reserve
 
 ---
 
-**Last Updated**: January 2025  
+**Last Updated**: June 2025  
 **Version**: 1.0.0  
 **Build Status**: ✅ Production Ready
