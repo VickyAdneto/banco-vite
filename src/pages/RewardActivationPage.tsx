@@ -17,6 +17,7 @@ import {
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { AxisButton } from "../components/AxisButton";
 import { BurgundyActivationHero } from "../components/BurgundyActivationHero";
+import { useNavigation } from "react-day-picker";
 
 type RewardActivationPageProps = {
   userData: {
@@ -28,7 +29,7 @@ type RewardActivationPageProps = {
   onRewardSelect?: (rewardId: string) => void;
 };
 
-export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivationPageProps) => {
+export const RewardActivationPage = ({ userData, onExploreRewards, onRewardSelect }: RewardActivationPageProps) => {
   // State for which game section is active (if any)
   const [activeGameSection, setActiveGameSection] = useState<string | null>(null);
   
@@ -50,8 +51,8 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
   const activationOffers = [
     {
       id: "dining",
-      title: "Fine Dining Experience",
-      description: "Activate 25% off at premium restaurants across India",
+      title: "15% Offer applicable on total bill",
+      description: "Enjoy 15% off your total bill at Vietnom, great serving authentic Vietnamese pho and traditional cuisine in a vibrant setting.",
       points: 250,
       image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
       category: "Dining",
@@ -59,35 +60,38 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
     },
     {
       id: "lounge",
-      title: "Airport Lounge Access",
-      description: "Activate complimentary lounge access at domestic airports",
+      title: "Save 20% on IHG Hotel Stays",
+      description: "Enjoy 20% off on stays at IHG’s global luxury and business hotels. Experience premium comfort and world-class hospitality worldwide.",
       points: 500,
-      image: "https://images.unsplash.com/photo-1583418007992-a8e33a92e7ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      // image: "https://images.unsplash.com/photo-1627750673161-02af15c7c722?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWlycG9ydCUyMGxvdW5nZXxlbnwwfHwwfHx8MA%3D%3D",
+      image: "https://www.businesstoday.com.my/wp-content/uploads/2022/06/IHG-Danang-Sun-Peninsula-Resort-1280x666.jpg",
       category: "Travel",
       icon: <Plane className="h-5 w-5" />
     },
     {
       id: "shopping",
-      title: "Premium Shopping Voucher",
-      description: "Activate ₹1000 shopping voucher for luxury brands",
+      title: "Additional 20% off",
+      description: "Get an additional 20% off at Marks & Spencer, the iconic British retailer for stylish clothing. Shop the latest trends and timeless classics.",
       points: 400,
       image: "https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      // image: "https://media.licdn.com/dms/image/v2/C5112AQEajNTUscBwuQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1558104728646?e=2147483647&v=beta&t=BnPypkzNsyRXmFspQczXAt1x1Ch2NgIVrK40mC5heJ8",
       category: "Shopping",
       icon: <ShoppingBag className="h-5 w-5" />
     },
     {
       id: "movie",
-      title: "Premium Movie Experience",
-      description: "Activate 2 premium movie tickets at INOX",
+      title: "25% Off Sony LIV Premium Packs",
+      description: "Enjoy 25% off on all Sony LIV Premium packs. Stream top shows, movies, and sports with unlimited entertainment online.",
       points: 300,
-      image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      image: "https://etimg.etb2bimg.com/photo/76029910.cms",
+      // image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
       category: "Entertainment",
       icon: <Film className="h-5 w-5" />
     },
     {
       id: "cashback",
-      title: "Credit Card Cashback",
-      description: "Activate 5% cashback on your next 5 transactions",
+      title: "Get 10% off on subscription",
+      description: "Get 10% off on BUSY subscription accounting software designed for small businesses to manage finances, billing, and GST efficiently.",
       points: 350,
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
       category: "Financial",
@@ -95,11 +99,12 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
     },
     {
       id: "wellness",
-      title: "Wellness Package",
-      description: "Activate premium spa and gym access for a month",
+      title: "Flat 10% Off on Prescribed Medicines",
+      description: "Get flat 10% off on prescription medicines at Apollo Pharmacy, your trusted destination for genuine medicines and essential healthcare products.",
       points: 600,
-      image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      category: "Lifestyle",
+      // image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      image: "https://media.istockphoto.com/id/156292188/photo/doctor-holding-out-several-packs-of-a-variety-of-pills.jpg?s=612x612&w=0&k=20&c=WEYtSbG6FM0WDbm7E_3QT8ZCqIEwQ9tDnGakyg5hhIw=",
+      category: "Wellness",
       icon: <Star className="h-5 w-5" />
     }
   ];
@@ -135,7 +140,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
       id: "wheel",
       title: "Spin the Wheel",
       description: "Spin to win additional rewards and points",
-      image: "https://images.unsplash.com/photo-1642483200566-0bf6259d9ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      image: "https://media.istockphoto.com/id/2177986993/photo/wheel-of-fortune.webp?a=1&b=1&s=612x612&w=0&k=20&c=wZMJ91xOKoZoSxWbjbBTVlAWha81jhT_s3MQjHfWBII=",
       maxReward: 500
     },
     {
@@ -149,7 +154,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
       id: "match",
       title: "Match & Earn",
       description: "Match the pairs to unlock surprise rewards",
-      image: "https://images.unsplash.com/photo-1659111256866-bef5445be555?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       maxReward: 400
     }
   ];
@@ -161,15 +166,53 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
         userData={enhancedUserData}
         onActivateMore={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
       />
+
+
+      {/* Featured Reward */}
+      <div className="bg-white py-10 border-t">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row bg-gradient-to-r from-[#97144D]/10 to-[#12877F]/5 rounded-xl overflow-hidden">
+            <div className="md:w-1/2 p-8">
+              <div className="inline-block px-3 py-1 bg-[#97144D] text-white text-xs font-medium rounded-full mb-4">
+                FEATURED BURGUNDY BENEFITS
+              </div>
+              <h2 className="text-2xl font-bold mb-3 text-[#97144D]">
+                Flat 25% off on making charges on a minimum purchase of Rs.75,000 on Gold Jewellery.
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Get flat 25% off on making charges at Kalyan Jewellers with a minimum purchase of ₹75,000 on exquisite gold jewellery. Discover timeless designs and unmatched craftsmanship while availing this exclusive limited-time offer. Perfect for every special occasion.
+              </p>
+              
+              {/* <div className="flex items-center mb-6">
+                <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className="bg-[#97144D] h-2.5 rounded-full" style={{ width: "70%" }}></div>
+                </div>
+                <div className="ml-3 text-sm font-medium text-[#97144D]">17,500 / 25,000 pts</div>
+              </div> */}
+              
+              <AxisButton variant="primary">
+                Learn More
+              </AxisButton>
+            </div>
+            <div className="md:w-1/2">
+              <ImageWithFallback 
+                src="https://images.unsplash.com/photo-1652375152241-d3e62ab52b57?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGluZGlhbiUyMGpld2Vscnl8ZW58MHx8MHx8fDA%3D"
+                alt="Private Yacht Experience"
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       
       {/* Activation Offers Section */}
       <div className="bg-gray-50 py-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-[#97144D] mb-2">Rewards Ready for Activation</h2>
+              <h2 className="text-2xl font-bold text-[#97144D] mb-2">Benefits Ready for Activation</h2>
               <p className="text-gray-600 max-w-2xl">
-                Activate these exclusive Burgundy rewards to enjoy premium benefits and experiences tailored for you.
+                Activate these exclusive Burgundy benefits to enjoy premium experiences tailored for you.
               </p>
             </div>
             
@@ -200,48 +243,10 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
           </div>
 
           {/* Browse More Rewards Button */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8" onClick={onExploreRewards}>
             <AxisButton variant="outline" className="px-8 py-2 text-base font-medium">
-              Browse More Rewards
+              Browse More Benefits
             </AxisButton>
-          </div>
-        </div>
-      </div>
-
-      {/* Featured Reward */}
-      <div className="bg-white py-10 border-t">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row bg-gradient-to-r from-[#97144D]/10 to-[#12877F]/5 rounded-xl overflow-hidden">
-            <div className="md:w-1/2 p-8">
-              <div className="inline-block px-3 py-1 bg-[#97144D] text-white text-xs font-medium rounded-full mb-4">
-                FEATURED BURGUNDY REWARD
-              </div>
-              <h2 className="text-2xl font-bold mb-3 text-[#97144D]">
-                Private Yacht Experience
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Enjoy an exclusive private yacht experience for you and your family at select coastal destinations. 
-                This premium reward includes gourmet catering and a dedicated crew for a memorable day at sea.
-              </p>
-              
-              <div className="flex items-center mb-6">
-                <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div className="bg-[#97144D] h-2.5 rounded-full" style={{ width: "70%" }}></div>
-                </div>
-                <div className="ml-3 text-sm font-medium text-[#97144D]">17,500 / 25,000 pts</div>
-              </div>
-              
-              <AxisButton variant="primary">
-                Learn More
-              </AxisButton>
-            </div>
-            <div className="md:w-1/2">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Private Yacht Experience"
-                className="w-full h-full object-cover"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -249,7 +254,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
       {/* Recently Activated Section */}
       <div className="bg-white py-10 border-t border-b">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-[#97144D] mb-6">Recently Activated Rewards</h2>
+          <h2 className="text-2xl font-bold text-[#97144D] mb-6">Recently Activated Benefits</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {recentlyActivated.map((reward, index) => (
@@ -274,7 +279,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-500">{reward.date}</span>
-                    <span className="text-sm font-medium text-[#97144D]">{reward.points} points</span>
+                    {/* <span className="text-sm font-medium text-[#97144D]">{reward.points} points</span> */}
                   </div>
                   <div className="flex items-center text-[#12877F]">
                     <Check className="h-4 w-4 mr-1" />
@@ -291,7 +296,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
       </div>
       
       {/* Bonus Games Section */}
-      <div className="bg-[#f9f3f6] py-10">
+      {/* <div className="bg-[#f9f3f6] py-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-[#97144D]">Bonus Games & Challenges</h2>
@@ -343,7 +348,7 @@ export const RewardActivationPage = ({ userData, onRewardSelect }: RewardActivat
             </AxisButton>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -368,8 +373,8 @@ const ActivationCard = ({ offer, index, onSelect }: { offer: any; index: number;
           alt={offer.title}
           className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`} />
+
         <div className="absolute top-3 left-3">
           <div className="flex items-center bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
             <div className="text-[#97144D] mr-1.5">
@@ -379,9 +384,9 @@ const ActivationCard = ({ offer, index, onSelect }: { offer: any; index: number;
           </div>
         </div>
         
-        <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-white text-sm px-2 py-1 rounded-md">
+        {/* <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-white text-sm px-2 py-1 rounded-md">
           {offer.points} points
-        </div>
+        </div> */}
       </div>
       
       <div className="p-4 relative">
@@ -404,7 +409,7 @@ const ActivationCard = ({ offer, index, onSelect }: { offer: any; index: number;
         <AxisButton variant="primary" fullWidth className="mt-3">
           <div className="flex items-center justify-center">
             <Sparkles className="h-4 w-4 mr-2" /> 
-            Activate Reward
+            Activate Benefits
           </div>
         </AxisButton>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowLeft, Star, Clock, Gift, Users, Shield, Share2, Heart, ExternalLink, CheckCircle, AlertCircle, Info } from "lucide-react";
+import { ArrowLeft, Star, Clock, Gift, Users, Shield, Share2, Heart, ExternalLink, CheckCircle, AlertCircle, Info, HelpCircle, ChevronUp, ChevronDown } from "lucide-react";
 import { AxisButton } from "../components/AxisButton";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Badge } from "../components/ui/badge";
@@ -28,56 +28,92 @@ type RewardDetailPageProps = {
 const mockRewardData = {
   "luxury-watch": {
     id: "luxury-watch",
-    title: "Luxury Swiss Watch Collection",
-    subtitle: "Premium Timepieces for Burgundy Members",
-    description: "Discover our exclusive collection of Swiss-made luxury watches, featuring renowned brands like Omega, TAG Heuer, and Tissot. Each timepiece represents the pinnacle of craftsmanship and precision engineering.",
-    longDescription: "Our Luxury Swiss Watch Collection offers Burgundy segment members access to some of the world's most prestigious timepieces. From classic dress watches to sophisticated sport chronographs, each piece in our collection has been carefully curated to represent the finest in Swiss horological tradition. These watches are not just timekeepers; they are symbols of achievement, precision, and timeless elegance.",
+    title: "Get Flat 25% Off",
+    subtitle: "Get Flat 25% Off on all Sony LIV Premium packs",
+    description: "Explore Sonyliv discounts on Axis Benefits! Save on premium entertainment subscriptions for unlimited streaming of shows and movies. Subscribe now and enjoy your favorites!",
+    longDescription: "Sonyliv offers a premium streaming service with a vast library of shows, movies, and sports. Enjoy high-quality entertainment on demand, anytime, anywhere.",
+    thingsToNote: [
+      "Please use the coupon code at the time of checkout to avail discount",
+      "The coupon comes with a validity date and will not apply post expiry",
+      "The discount might be applicable only on selected products or for a minimum purchase value",
+      "Payment should be made by Bank's card with which you have logged in",
+      "There can be a limit on the coupon code usage for each customer. Kindly read the Terms & Conditions to know more"
+    ],
     pointsCost: 75000,
     originalValue: 125000,
+    pointHeader: "25% off on Sony LIV Premium",
     savings: 50000,
-    category: "Luxury Goods",
-    brand: "Swiss Collection",
+    category: "Entertainment",
+    couponCode: "ADNSONY25",
+    brand: "Sony LIV",
     availability: "Limited Stock",
     rating: 4.8,
     reviewCount: 156,
     redemptionCount: 423,
-    validUntil: "2024-12-31",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    redemptionSteps: [
+      "Click on https://www.sonyliv.com/subscription",
+      "Choose from SonyLiv Premium Monthly, Six-Monthly or Annual Pack",
+      "Apply Coupon Code at the time of checkout",
     ],
-    features: [
-      "Swiss Made Precision Movement",
-      "Sapphire Crystal Glass",
-      "Water Resistant 100m",
-      "Premium Leather Strap",
-      "2-Year International Warranty",
-      "Certificate of Authenticity"
-    ],
+    validUntil: "2025-12-31",
+    image: "https://etimg.etb2bimg.com/photo/76029910.cms",
+    // gallery: [
+    //   "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    //   "https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    //   "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    //   "https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    // ],
+    // features: [
+    //   "Swiss Made Precision Movement",
+    //   "Sapphire Crystal Glass",
+    //   "Water Resistant 100m",
+    //   "Premium Leather Strap",
+    //   "2-Year International Warranty",
+    //   "Certificate of Authenticity"
+    // ],
     termsAndConditions: [
-      "Valid for Burgundy segment customers only",
-      "One redemption per customer per calendar year",
-      "Subject to availability at time of redemption",
-      "Cannot be combined with other offers",
-      "Non-transferable and non-refundable",
-      "Delivery within 7-10 business days"
+      "Offer is applicable on 1 month, 6 month and 12 months packs",
+      "Offer valid for Burgundy customers only",
+      "Offer valid till 31st December 2025",
+      "Offer cannot be clubbed with any other offer",
+      "Offer can only be availed through the link shared"
     ],
+
     eligibility: {
-      segment: "Burgundy",
-      minBalance: 500000,
-      accountAge: 12
+      segment: "Cannot be used multiple times",
+      redemptionMode: "Can use online",
+      clubbable: "Cannot be used with Brand offers"
     },
-    tags: ["Premium", "Swiss Made", "Limited Edition", "Exclusive"],
-    relatedRewards: ["premium-jewelry", "luxury-travel", "fine-dining"]
+    tags: ["Premium", "Sony Liv", "Exclusive"],
+    relatedRewards: ["premium-jewelry", "luxury-travel", "fine-dining"],
+    faq: [
+      {
+        "question": "What is the best deal I can get using SonyLIV coupon codes?",
+        "answer": "Using SonyLIV promo codes, users can save flat 25% on any of the subscription plans."
+      },
+      {
+        "question": "How can I get a promo code for SonyLiv?",
+        "answer": "Get SonyLiv promo codes and deals from Bancko, the one-stop savings destination for everything online."
+      },
+      {
+        "question": "How to use SonyLiv coupons?",
+        "answer": "Apply the coupon while purchasing a SonyLiv subscription. On the checkout page, find a box where you can enter a coupon code and hit Apply. You can get coupon codes from GrabOn."
+      },
+      {
+        "question": "How to activate promo code on SonyLIV subscription?",
+        "answer": "To activate the promo code, you need to login to Sonyliv. On the payment page, choose Gift card/Coupon code, enter the promo code, and then click Redeem."
+      },
+      {
+        "question": "Can a SonyLIV subscription be shared?",
+        "answer": "Only the Liv Premium annual and semi-annual plan users can share two screens at the same time."
+      }
+    ]
   },
   "premium-jewelry": {
     id: "premium-jewelry",
-    title: "Premium Diamond Jewelry",
-    subtitle: "Exquisite Diamond Collection",
-    description: "Stunning diamond jewelry pieces crafted by master artisans.",
+    title: "Flat 25% off on making charges",
+    subtitle: "Flat 25% off on making charges Collection on Kalyan Jewellers.",
+    description: "Stunning diamond jewelry pieces crafted by master artisans from Kalyan Jewellers.",
     longDescription: "Our premium diamond jewelry collection features exceptional pieces crafted by renowned jewelers, each piece certified and guaranteed for authenticity.",
     pointsCost: 85000,
     originalValue: 150000,
@@ -89,7 +125,7 @@ const mockRewardData = {
     reviewCount: 89,
     redemptionCount: 234,
     validUntil: "2024-12-31",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1652375152241-d3e62ab52b57?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGluZGlhbiUyMGpld2Vscnl8ZW58MHx8MHx8fDA%3D",
     gallery: [
       "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -115,18 +151,59 @@ const mockRewardData = {
       accountAge: 18
     },
     tags: ["Certified", "18K Gold", "Premium", "Lifetime Warranty"],
-    relatedRewards: ["luxury-watch", "fine-dining", "luxury-travel"]
+    relatedRewards: ["luxury-watch", "fine-dining", "luxury-travel"],
   }
 };
+
+function FAQAccordion({ faqs }: { faqs: { question: string; answer: string }[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (!faqs || faqs.length === 0)
+    return <div className="text-gray-500">No FAQs available.</div>;
+
+  return (
+    <div className="divide-y divide-gray-200">
+      {faqs.map((faq, idx) => (
+        <div key={idx} className="py-3">
+          <button
+            className="flex w-full items-center justify-between text-left font-semibold text-[#97144D] hover:text-[#7d1041] transition-colors focus:outline-none"
+            onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+            aria-expanded={openIndex === idx}
+          >
+            <span className="flex items-center gap-2">
+              <HelpCircle className="h-5 w-5 text-[#97144D]" />
+              {faq.question}
+            </span>
+            {openIndex === idx ? (
+              <ChevronUp className="h-5 w-5" />
+            ) : (
+              <ChevronDown className="h-5 w-5" />
+            )}
+          </button>
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              openIndex === idx ? "max-h-40 mt-2" : "max-h-0"
+            }`}
+          >
+            <div className="text-gray-700 text-sm bg-gray-50 rounded p-3 shadow-inner">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: RewardDetailPageProps) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [showRedemptionModal, setShowRedemptionModal] = useState(false);
+  const [showCouponCode, setShowCouponCode] = useState(false);
 
   // Scroll to top when this page mounts or rewardId changes
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [rewardId]);
   
   // Get reward data (fallback to luxury-watch if rewardId not found)
@@ -146,8 +223,9 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
   };
   
   const confirmRedemption = () => {
-    onRedeem(reward.id);
+    // onRedeem(reward.id);
     setShowRedemptionModal(false);
+    setShowCouponCode(true);
   };
 
   return (
@@ -162,7 +240,7 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
               className="flex items-center gap-2"
             >
               <ArrowLeft size={16} />
-              Back to Rewards
+              Back to Benefits
             </AxisButton>
             <div className="flex items-center gap-2 ml-auto">
               <button 
@@ -185,22 +263,22 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
             <div className="space-y-4">
               <div className="relative">
                 <ImageWithFallback
-                  src={reward.gallery[selectedImageIndex]}
+                  src={reward.image}
                   alt={reward.title}
                   className="w-full h-96 object-cover rounded-xl"
                 />
-                <Badge className="absolute top-4 left-4 bg-[#97144D] text-white">
+                {/* <Badge className="absolute top-4 left-4 bg-[#97144D] text-white">
                   {reward.availability}
                 </Badge>
                 {reward.tags.includes("Limited Edition") && (
                   <Badge className="absolute top-4 right-4 bg-orange-500 text-white">
                     Limited Edition
                   </Badge>
-                )}
+                )} */}
               </div>
               
               {/* Thumbnail Gallery */}
-              {reward.gallery.length > 1 && (
+              {/* {reward.gallery.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto">
                   {reward.gallery.map((image, index) => (
                     <button
@@ -220,7 +298,7 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                     </button>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
             
             {/* Product Info */}
@@ -232,9 +310,9 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                 </div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{reward.title}</h1>
                 <p className="text-xl text-gray-600 mb-4">{reward.subtitle}</p>
-                
+
                 {/* Rating */}
-                <div className="flex items-center gap-3 mb-4">
+                {/* <div className="flex items-center gap-3 mb-4">
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -248,7 +326,7 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                   <span className="text-gray-500">({reward.reviewCount} reviews)</span>
                   <span className="text-gray-500">•</span>
                   <span className="text-gray-500">{reward.redemptionCount} redeemed</span>
-                </div>
+                </div> */}
               </div>
               
               {/* Pricing */}
@@ -256,34 +334,43 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <div className="text-3xl font-bold text-[#97144D]">
-                      {reward.pointsCost.toLocaleString()} Points
+                      {reward.pointHeader}
+                      {/* {reward.pointsCost.toLocaleString()} Points */}
                     </div>
-                    <div className="text-sm text-gray-600">
+                    {showCouponCode && (  
+                      <div className="bg-green-50 mt-4 border border-green-200 text-green-800 p-4 rounded-lg mb-4">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Coupon Code:</span>
+                          <span>{reward.couponCode}</span>
+                        </div>
+                      </div>
+                    )}
+                    {/* <div className="text-sm text-gray-600">
                       Worth ₹{reward.originalValue.toLocaleString()}
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="text-right">
+                  {/* <div className="text-right">
                     <div className="text-lg font-semibold text-green-600">
                       Save ₹{reward.savings.toLocaleString()}
                     </div>
                     <div className="text-sm text-gray-600">
                       {savingsPercentage}% off
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 
                 {/* Points Balance */}
                 <div className="mb-4">
-                  <div className="flex justify-between text-sm mb-1">
+                  {/* <div className="flex justify-between text-sm mb-1">
                     <span>Your Points Balance</span>
                     <span className={canRedeem ? "text-green-600" : "text-red-600"}>
                       {userPoints.toLocaleString()} points
                     </span>
-                  </div>
-                  <Progress 
+                  </div> */}
+                  {/* <Progress 
                     value={(userPoints / reward.pointsCost) * 100} 
                     className="h-2"
-                  />
+                  /> */}
                   {!canRedeem && (
                     <div className="text-sm text-red-600 mt-1">
                       Need {(reward.pointsCost - userPoints).toLocaleString()} more points
@@ -312,10 +399,10 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                   <Shield size={16} className="text-gray-400" />
                   <span>Burgundy Exclusive</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
+                {/* <div className="flex items-center gap-2 text-sm">
                   <Gift size={16} className="text-gray-400" />
                   <span>Gift Wrapping Available</span>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-2 text-sm">
                   <Users size={16} className="text-gray-400" />
                   <span>{reward.redemptionCount}+ Happy Customers</span>
@@ -331,11 +418,11 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
         <Tabs defaultValue="overview" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
+            <TabsTrigger value="redemption">Redemption Steps</TabsTrigger>
             <TabsTrigger value="terms">Terms</TabsTrigger>
-            <TabsTrigger value="reviews">Reviews</TabsTrigger>
+            <TabsTrigger value="faq">FAQ's</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="overview" className="mt-6">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="md:col-span-2">
@@ -347,6 +434,11 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                     <p className="text-gray-700 leading-relaxed mb-4">
                       {reward.description}
                     </p>
+                  </CardContent>
+                  <CardHeader>
+                    <CardTitle>Brand Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
                     <p className="text-gray-600 leading-relaxed">
                       {reward.longDescription}
                     </p>
@@ -365,16 +457,16 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Segment</span>
+                      <span className="text-gray-600">Multiple Uses</span>
                       <Badge variant="outline">{reward.eligibility.segment}</Badge>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Min Balance</span>
-                      <span>₹{reward.eligibility.minBalance.toLocaleString()}</span>
+                      <span className="text-gray-600">Reddemption Mode</span>
+                      <span>{reward.eligibility.redemptionMode}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Account Age</span>
-                      <span>{reward.eligibility.accountAge} months</span>
+                      <span className="text-gray-600">Clubbable</span>
+                      <span>{reward.eligibility.clubbable}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -397,28 +489,28 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
               </div>
             </div>
           </TabsContent>
-          
-          <TabsContent value="features" className="mt-6">
+
+          <TabsContent value="redemption" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Product Features & Benefits</CardTitle>
+                <CardTitle>Product Redemption Steps</CardTitle>
                 <CardDescription>
-                  Detailed features and specifications of this reward
+                  Detailed steps to redeem this reward
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {reward.features.map((feature, index) => (
+                <div className="flex flex-col gap-4">
+                  {reward.redemptionSteps.map((step, index) => (
                     <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <span>{index + 1}. {step}</span>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="terms" className="mt-6">
             <Card>
               <CardHeader>
@@ -442,98 +534,11 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
               </CardContent>
             </Card>
           </TabsContent>
-          
-          <TabsContent value="reviews" className="mt-6">
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Customer Reviews</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {/* Sample reviews */}
-                    <div className="space-y-6">
-                      {[
-                        {
-                          name: "Rajesh Kumar",
-                          rating: 5,
-                          date: "2 weeks ago",
-                          comment: "Absolutely stunning timepiece! The quality exceeded my expectations. The delivery was prompt and the packaging was excellent."
-                        },
-                        {
-                          name: "Priya Sharma",
-                          rating: 5,
-                          date: "1 month ago",
-                          comment: "Perfect addition to my collection. The Swiss craftsmanship is evident in every detail. Highly recommended for Burgundy members."
-                        },
-                        {
-                          name: "Amit Patel",
-                          rating: 4,
-                          date: "2 months ago",
-                          comment: "Great value for points spent. The watch looks and feels premium. Only minor issue was the delivery took slightly longer than expected."
-                        }
-                      ].map((review, index) => (
-                        <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="font-medium">{review.name}</span>
-                              <div className="flex items-center">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    size={14}
-                                    className={i < review.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                            <span className="text-sm text-gray-500">{review.date}</span>
-                          </div>
-                          <p className="text-gray-700">{review.comment}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              <div>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Rating Summary</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center mb-4">
-                      <div className="text-4xl font-bold text-[#97144D]">{reward.rating}</div>
-                      <div className="flex justify-center items-center gap-1 mb-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={16}
-                            className={i < Math.floor(reward.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-sm text-gray-600">{reward.reviewCount} reviews</div>
-                    </div>
-                    
-                    {/* Rating breakdown */}
-                    <div className="space-y-2">
-                      {[5, 4, 3, 2, 1].map((stars) => {
-                        const percentage = stars === 5 ? 75 : stars === 4 ? 20 : stars === 3 ? 3 : stars === 2 ? 1 : 1;
-                        return (
-                          <div key={stars} className="flex items-center gap-2 text-sm">
-                            <span className="w-8">{stars}★</span>
-                            <Progress value={percentage} className="flex-1 h-2" />
-                            <span className="w-10 text-gray-500">{percentage}%</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+
+          <TabsContent value="faq" className="mt-6">
+            <CardContent>
+              <FAQAccordion faqs={reward.faq} />
+            </CardContent>
           </TabsContent>
         </Tabs>
       </div>
@@ -553,17 +558,17 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
                     <ImageWithFallback
                       src={relatedReward.image}
                       alt={relatedReward.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover rounded-t-[10px]"
                     />
                   </div>
                   <CardContent className="p-4">
                     <h3 className="font-semibold mb-2">{relatedReward.title}</h3>
                     <p className="text-sm text-gray-600 mb-3">{relatedReward.subtitle}</p>
                     <div className="flex justify-between items-center">
-                      <span className="font-bold text-[#97144D]">
+                      {/* <span className="font-bold text-[#97144D]">
                         {relatedReward.pointsCost.toLocaleString()} pts
-                      </span>
-                      <AxisButton variant="outline" size="sm">
+                      </span> */}
+                      <AxisButton variant="outline" size="sm" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                         View Details
                       </AxisButton>
                     </div>
@@ -597,14 +602,14 @@ export const RewardDetailPage = ({ userData, rewardId, onBack, onRedeem }: Rewar
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium">{reward.title}</span>
               </div>
-              <div className="flex justify-between items-center text-sm text-gray-600">
+              {/* <div className="flex justify-between items-center text-sm text-gray-600">
                 <span>Points Required</span>
                 <span className="font-medium">{reward.pointsCost.toLocaleString()}</span>
               </div>
               <div className="flex justify-between items-center text-sm text-gray-600">
                 <span>Your Balance After</span>
                 <span className="font-medium">{(userPoints - reward.pointsCost).toLocaleString()}</span>
-              </div>
+              </div> */}
             </div>
             
             <div className="flex gap-3">
