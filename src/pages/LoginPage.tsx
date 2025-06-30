@@ -148,7 +148,6 @@ export const LoginPage = ({ onLogin }: LoginPageProps) => {
               <h2 className="text-3xl font-bold mb-4">Exclusive rewards await you</h2>
               <p className="text-lg opacity-90 mb-6">
                 Access tailored rewards designed specifically for your financial journey.
-                Access tailored rewards designed specifically for your financial journey.
               </p>
             </div>
           )}
